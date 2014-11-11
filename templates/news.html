@@ -11,10 +11,22 @@
 			{{u.categories}}
 		{% endfor %}
 
-        {% for article in articleList %}
 
-			<p> {{article.1}}</p>
-            <img src= {{article.2}} >
-		{% endfor %}
+            {% for article in articleList %}
+
+                    {% if article.3 %}
+                        <table>
+                        <h2>{{ article.3 }}</h2>
+                         <col width="60px" />
+                         <col width="40px" />
+                         <col width="60px" />
+                         <col width="0px" />
+                        <tr>
+                    {% endif %}
+
+                    <td> <p><a href="">{{article.1}}</a></p>
+                    <p><img src= {{article.2}}></p></td>
+                    <td></td>
+            {% endfor %}
 	</body>
 </html>

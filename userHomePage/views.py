@@ -25,6 +25,7 @@ def news(request):
 
     #userData = json.dumps(loggedUser)
     articleList = []
+    lastSection = None
     for u in loggedUser:
         keys = u.categories.keys()
         for key in keys:
@@ -32,9 +33,14 @@ def news(request):
             if (data[0] > 5):
                 print key
                 for article in articles.objects(sectionId=key)[:2]:
-                    articleData = [article._id, article.webTitle, article.thumbNail, article.sectionId]
+                    #passing sectionId only to the first article of each section
+                    if( lastSection != article.sectionId) :
+                        articleData = [article._id, article.webTitle, article.thumbNail, article.sectionId]
+                        lastSection = article.sectionId
+                    else :
+                        articleData = [article._id, article.webTitle, article.thumbNail]
+
                     articleList.append(articleData)
-                    print article._id
 
 
     return render(request, 'news.html', {'loginId': loginId, 'user': loggedUser, 'articleList': articleList})
