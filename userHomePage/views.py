@@ -32,10 +32,14 @@ def news(request):
             if (data[0] > 5):
                 print key
                 for article in articles.objects(sectionId=key)[:2]:
-                    articleList.append(article._id)
+                    articleData = [article._id, article.webTitle, article.thumbNail, article.sectionId]
+                    articleList.append(articleData)
                     print article._id
 
 
     return render(request, 'news.html', {'loginId': loginId, 'user': loggedUser, 'articleList': articleList})
+
+
+
 
 
