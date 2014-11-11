@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NewsBoard HomePage </title>
+	</head>
+	<body>
+		<h1>It is now {{ current_date }}.</h1>
+		<form method="post" action="http://54.148.69.86:8000/news/">
+			{% csrf_token %}
+			<label for="loginId">Login Id: </label>
+			<input type="text" id="loginId" name="loginId" placeholder="Your Login Id" required>
+			<input type="submit" value="Login">
+		</form>
+	</body>
+</html>

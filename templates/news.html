@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NewsBoard News </title>
+	</head>
+	<body>
+		<h1>Hello {{loginId}}</h1>
+		{% for u in user %}
+
+			<p> {{u.total}}</p>
+			{{u.categories}}
+		{% endfor %}
+
+        {% for article in articleList %}
+
+			<p> {{article}}</p>
+		{% endfor %}
+	</body>
+</html>
