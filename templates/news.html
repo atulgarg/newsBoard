@@ -5,28 +5,17 @@
 	</head>
 	<body>
 		<h1>Hello {{loginId}}</h1>
-		{% for u in user %}
+         <h4>Percentages shown in brackets indicates how much does a user reads a particular section (Based on count)</h4>
+        {% for article in articleList %}
+                {% if article.3 %}
+                    <table>
+                    <h2>{{ article.3 }}  ({{ article.4 }}%)</h2>
+                    <tr>
+                {% endif %}
 
-			<p> {{u.total}}</p>
-			{{u.categories}}
-		{% endfor %}
-
-
-            {% for article in articleList %}
-
-                    {% if article.3 %}
-                        <table>
-                        <h2>{{ article.3 }}</h2>
-                         <col width="60px" />
-                         <col width="40px" />
-                         <col width="60px" />
-                         <col width="0px" />
-                        <tr>
-                    {% endif %}
-
-                    <td> <p><a href="">{{article.1}}</a></p>
-                    <p><img src= {{article.2}}></p></td>
-                    <td></td>
-            {% endfor %}
+                <td style="width:60px"><p><img src= {{article.2}}></p>
+                    <p><a href="">{{article.1}}</a></p></td>
+                <td style="width:30px"></td>
+        {% endfor %}
 	</body>
 </html>
