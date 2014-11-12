@@ -21,6 +21,8 @@ class articles(Document):
     _id =  StringField(primary_key=True)
     thumbNail =  StringField()
 
+
     meta = {
-        'ordering' : ['-date']
+        'indexes' : ['id' ,'predictedSectionId', 'date' ],
+        'ordering' : ['+date']
     }
