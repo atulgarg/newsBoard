@@ -17,6 +17,10 @@ class articles(Document):
     predictedSectionId = StringField()
     webTitle =  StringField()
     webUrl =  StringField()
-    date =  StringField()
+    date =  DateTimeField()
     _id =  StringField(primary_key=True)
     thumbNail =  StringField()
+
+    meta = {
+        'ordering' : ['-date']
+    }
