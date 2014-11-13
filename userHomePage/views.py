@@ -5,6 +5,7 @@ from django import forms
 import json
 import operator
 import logging
+from helper import *
 
 from userHomePage.models import users, articles
 import mongoengine
@@ -45,7 +46,7 @@ def news(request):
             noOfArticles = sectionData[1]*30/totalCount
             articlePercent = sectionData[1]*100/totalCount
             print noOfArticles
-            for article in articles.objects(predictedSectionId=sectionData[0])[:noOfArticles]:
+            for article in articles.objects(sectionId=sectionData[0])[:noOfArticles]:
                 #passing sectionId only to the first article of each section
                 if( lastSection != article.sectionId) :
                     articleData = [article._id, article.webTitle, article.thumbNail, article.sectionId, articlePercent]
@@ -59,6 +60,27 @@ def news(request):
 
 
     return render(request, 'news.html', {'loginId': loginId, 'user': loggedUser, 'articleList': articleList})
+
+
+
+def article(request):
+
+       idAndUser =  request.path.split('&')
+       print idAndUser
+
+       articleData = []
+       _id = None
+       section = None
+       for article in articles.objects(_id=idAndUser[1]) :
+             articleData = [article.webTitle, article.body, article.thumbNail]
+             _id = article._id
+             section = article.sectionId
+             print articleData
+
+        #updateUserProfile(idAndUser[2], section)
+      # similarArticles = getDataFromSolr(_id)
+
+       return render(request, 'article.html', {'articleData' : articleData })
 
 
 
