@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<style>
+			#header {
+				color:blue;
+				text-align:center;
+				padding:5px;
+				margin-bottom: inherit;
+			}
+			#articleDetail {
+				line-height:30px;
+				background-color:#eeeeee;
+				width:900px;
+				float:left;
+				padding:5px;
+				word-wrap:break-word;	      
+			}
+			#similarArticle {
+				width:100px;
+				float:left;
+				padding:10px;	 	 
+			}
+			#similarHeading {
+				margin-top: -18px;
+			}
+		</style>
 		<title>{{ articleData.0 }} </title>
 	</head>
-	<body style="">
-        <h1> {{ articleData.0 }}</h1>
-        <p><img src= {{articleData.2}}></p>
-		{{ articleData.1 }}
-
-          {% for article in similarArticlesData %}
-                <p><a href={{ article.1 }}> {{ article.1 }}</a></p>
-                <p><img src= {{article.2}}></p>
-        {% endfor %}
+	<body>
+        <div id="header">
+			<h1>{{ articleData.0 }}</h1>
+		</div>
+		<div id="articleDetail">
+			<p><img src= {{articleData.2}}></p>
+			<p>{{ articleData.1 }}</p>
+		</div>
+		<div id="similarArticle">
+			<h1 id="similarHeading">Similar articles</h1>
+			{% for article in similarArticlesData %}
+				<img class="imagesLeftAligned" src= {{article.2}}>
+				<a href={{ article.1 }}> {{ article.1 }}</a>
+			{% endfor %}
+        </div>
 	</body>
 </html>
 
