@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ articleData.0 }} </title>
+	</head>
+	<body style="">
+        <h1> {{ articleData.0 }}</h1>
+        <p><img src= {{articleData.2}}></p>
+		{{ articleData.1 }}
+
+          {% for article in similarArticlesData %}
+                <p><a href={{ article.1 }}> {{ article.1 }}</a></p>
+                <p><img src= {{article.2}}></p>
+        {% endfor %}
+	</body>
+</html>
+
+
