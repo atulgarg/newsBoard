@@ -53,7 +53,7 @@ def news(request):
                     lastSection = article.sectionId
                 else :
                     articleData = [article._id, article.webTitle, article.thumbNail]
-                    print article.date
+                #    print article.date
 
                 articleList.append(articleData)
 
@@ -75,12 +75,11 @@ def article(request):
              articleData = [article.webTitle, article.body, article.thumbNail]
              _id = article._id
              section = article.sectionId
-             print articleData
 
-        #updateUserProfile(idAndUser[2], section)
-      # similarArticles = getDataFromSolr(_id)
+       #updateUserProfile(idAndUser[2], section)
+       similarArticlesData = getDataFromSolr(_id)
 
-       return render(request, 'article.html', {'articleData' : articleData })
+       return render(request, 'article.html', {'articleData' : articleData, 'similarArticlesData' : similarArticlesData  })
 
 
 
