@@ -4,25 +4,38 @@
 		<style>
 			#header {
 				color:blue;
-				text-align:center;
+				text-align:left;
 				padding:5px;
 				margin-bottom: inherit;
 			}
 			#articleDetail {
 				line-height:30px;
 				background-color:#eeeeee;
-				width:900px;
+				width:740px;
 				float:left;
 				padding:5px;
 				word-wrap:break-word;	      
 			}
+			#similarHeading {
+				margin-top: -18px;
+			}
 			#similarArticle {
-				width:100px;
+				width:500px;
 				float:left;
 				padding:10px;	 	 
 			}
-			#similarHeading {
-				margin-top: -18px;
+			#similarArticle ul {
+				padding: 0; 
+    			margin: 0;
+    			list-style-type: none;
+			}
+			#similarArticle li {
+				width: 150px;
+			    margin-bottom:5px;
+			    float: left;
+			}
+			.thumbNail {
+				margin-right: 2px;
 			}
 		</style>
 		<title>{{ articleData.0 }} </title>
@@ -37,12 +50,14 @@
 		</div>
 		<div id="similarArticle">
 			<h1 id="similarHeading">Similar articles</h1>
-			{% for article in similarArticlesData %}
-				<img class="imagesLeftAligned" src= {{article.2}}>
-				<a href="http://54.148.69.86/article&{{article.0}}&{{ loginId }}"> {{ article.1 }}</a>
-			{% endfor %}
+			<ul>
+				{% for article in similarArticlesData %}
+					<li class="thumbNail">
+						<img class="imagesLeftAligned" src= {{article.2}}> </img>
+						<a href="http://54.148.69.86/article&{{article.0}}&{{ loginId }}"> {{ article.1 }}</a>
+					</li>
+				{% endfor %}
+			</ul>
         </div>
 	</body>
 </html>
-
-
