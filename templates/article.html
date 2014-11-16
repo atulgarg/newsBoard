@@ -18,6 +18,7 @@
 			}
 			#similarHeading {
 				margin-top: -18px;
+				margin-left:30;
 			}
 			#similarArticle {
 				width:500px;
@@ -25,7 +26,7 @@
 				padding:10px;	 	 
 			}
 			#similarArticle ul {
-				padding: 0; 
+				padding: 40; 
     			margin: 0;
     			list-style-type: none;
 			}
@@ -49,7 +50,7 @@
 			<p>{{ articleData.1 }}</p>
 		</div>
 		<div id="similarArticle">
-			<h1 id="similarHeading">Similar articles</h1>
+			<h1 id="similarHeading">&nbsp; &nbsp; &nbsp; &nbsp;Similar articles</h1>
 			<ul>
 				{% for article in similarArticlesData %}
 					<li class="thumbNail">
