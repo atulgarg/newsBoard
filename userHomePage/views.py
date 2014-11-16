@@ -76,7 +76,7 @@ def article(request):
              _id = article._id
              section = article.sectionId
 
-       #updateUserProfile(idAndUser[2], section)
+       updateUserProfile(idAndUser[2], section)
        similarArticlesData = getDataFromSolr(_id)
 
        return render(request, 'article.html', {'articleData' : articleData, 'similarArticlesData' : similarArticlesData,'loginId' : idAndUser[2]  })

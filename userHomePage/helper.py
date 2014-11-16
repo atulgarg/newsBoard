@@ -2,14 +2,20 @@ from userHomePage.models import users, articles
 from urllib2 import *
 import mongoengine
 import simplejson
+import logging
 
 
-#def updateUserProfile(loginId, section) :
+def updateUserProfile(loginId, section) :
 
-  #  users.objects(_id=loginId).update_one(inc__total =1)
+  #can also use this line to update values
+  #users.objects(_id=loginId).update_one(inc__total =1)
 
-   # users.objects(_id=loginId).update_one(inc__categories =1)
-
+  for user in  users.objects(_id=loginId) :
+    user.categories[section][0] = user.categories[section][0] + 1
+    user.total = user.total + 1
+    logging.info('Article count for section ' + section + 'is ' + str(user.categories[section][0]))
+    logging.info('Total count is ' + str(user.total))
+    user.save()
 
 
 

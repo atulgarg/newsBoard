@@ -6,7 +6,7 @@ from mongoengine import *
 
 class users(Document):
 	_id = StringField(primary_key=True)
-	total = StringField()
+	total = IntField()
 	categories = DictField()
 
 
