@@ -23,6 +23,6 @@ class articles(Document):
 
 
     meta = {
-        'indexes' : ['id' ,'predictedSectionId', 'date' ],
-        'ordering' : ['+date']
+        'indexes' : ['_id' ,'predictedSectionId', 'date' ],
+        'ordering' : ['-date']
     }

@@ -49,7 +49,7 @@ def news(request):
             for article in articles.objects(predictedSectionId=sectionData[0])[:noOfArticles]:
                 #passing sectionId only to the first article of each section
                 if( lastSection != article.predictedSectionId) :
-                    articleData = [article._id, article.webTitle, article.thumbNail, article.predictedSectionId, articlePercent]
+                    articleData = [article._id, article.webTitle, article.thumbNail,article.predictedSectionId, articlePercent]
                     lastSection = article.predictedSectionId
                 else :
                     articleData = [article._id, article.webTitle, article.thumbNail]
@@ -59,7 +59,7 @@ def news(request):
 
 
 
-    return render(request, 'news.html', {'loginId': loginId, 'user': loggedUser, 'articleList': articleList})
+    return render(request, 'news.html', {'loginId': loginId, 'user': loggedUser, 'articleList': articleList, 'google_analytics_var1': ('user', loginId)})
 
 
 

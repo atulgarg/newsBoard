@@ -2,6 +2,18 @@
 <html>
 	<head>
 		<title>NewsBoard News </title>
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57001459-1', 'auto');
+  ga('set', 'dimension1', {{loginId}});
+  ga('send', 'pageview');
+</script>
+	<script src="riveted.min.js"></script>
+	<script>riveted.init();</script> 
 	</head>
 	<body bgcolor="#eeeeee">
 		<h1>Hello {{loginId}}</h1>
@@ -12,7 +24,6 @@
                     <h2>{{ article.3 }}  ({{ article.4 }}%)</h2>
                     <tr>
                 {% endif %}
-
                 <td style="width:60px"><p><img src= {{article.2}}></p>
                     <p><a href="http://54.148.69.86/article&{{article.0}}&{{ loginId }}">{{article.1}}</a></p></td>
                 <td style="width:30px"></td>
