@@ -1,0 +1,10 @@
+inside auth file
+client_secrets.json
+<oauth2client.client.OAuth2WebServerFlow object at 0x7f158ec89dd0>
+inside main
+<oauth2client.client.OAuth2Credentials object at 0x7f158ec210d0>
+<oauth2client.client.OAuth2Credentials object at 0x7f158ec210d0>
+<googleapiclient.discovery.Resource object at 0x7f158dd0b910>
+94209405
+                       Riveted                    Time Spent10?articleName=Confederations Cup Football Daily: Spain spanked by brilliant Brazil&userId=anil                             1
+                       Riveted                    Time Spent10?articleName=Crystal Palace hope to sign Liverpool&#39;s Jonjo Shelvey on season&#39;s loan&userId=anil                             1
