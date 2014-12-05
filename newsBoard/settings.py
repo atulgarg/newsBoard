@@ -17,7 +17,7 @@ import mongoengine
 DBNAME = 'newsBoard'
 
 mongoengine.connect(DBNAME)
-
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-57001459-1'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'userHomePage',
+    'analytical',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -46,11 +46,11 @@ def news(request):
             noOfArticles = sectionData[1]*30/totalCount
             articlePercent = sectionData[1]*100/totalCount
             print noOfArticles
-            for article in articles.objects(sectionId=sectionData[0])[:noOfArticles]:
+            for article in articles.objects(predictedSectionId=sectionData[0])[:noOfArticles]:
                 #passing sectionId only to the first article of each section
-                if( lastSection != article.sectionId) :
-                    articleData = [article._id, article.webTitle, article.thumbNail, article.sectionId, articlePercent]
-                    lastSection = article.sectionId
+                if( lastSection != article.predictedSectionId) :
+                    articleData = [article._id, article.webTitle, article.thumbNail,article.predictedSectionId, articlePercent]
+                    lastSection = article.predictedSectionId
                 else :
                     articleData = [article._id, article.webTitle, article.thumbNail]
                 #    print article.date
@@ -59,7 +59,7 @@ def news(request):
 
 
 
-    return render(request, 'news.html', {'loginId': loginId, 'user': loggedUser, 'articleList': articleList})
+    return render(request, 'news.html', {'loginId': loginId, 'user': loggedUser, 'articleList': articleList, 'google_analytics_var1': ('user', loginId)})
 
 
 
@@ -76,10 +76,10 @@ def article(request):
              _id = article._id
              section = article.sectionId
 
-       #updateUserProfile(idAndUser[2], section)
+       updateUserProfile(idAndUser[2], section)
        similarArticlesData = getDataFromSolr(_id)
 
-       return render(request, 'article.html', {'articleData' : articleData, 'similarArticlesData' : similarArticlesData  })
+       return render(request, 'article.html', {'articleData' : articleData, 'similarArticlesData' : similarArticlesData,'loginId' : idAndUser[2]  })
 
 
 
