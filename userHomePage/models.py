@@ -7,6 +7,7 @@ from mongoengine import *
 class users(Document):
 	_id = StringField(primary_key=True)
 	total = IntField()
+	totalTime = FloatField()
 	categories = DictField()
 
 
@@ -20,7 +21,7 @@ class articles(Document):
     date =  DateTimeField()
     _id =  StringField(primary_key=True)
     thumbNail =  StringField()
-
+    expectedTime = IntField()
 
     meta = {
         'indexes' : ['_id' ,'predictedSectionId', 'date' ],

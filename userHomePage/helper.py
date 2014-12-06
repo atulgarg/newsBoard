@@ -20,12 +20,14 @@ def updateUserProfile(loginId, section) :
       user.categories[section]['total'][0] = user.categories[section]['total'][0] + UPDATE_FACTOR
     else :
      # Even if the section does not have a "." it might be a section with subsection and this will have total field
-        if 'total' in user.categories[section].keys() :
-            user.categories[section]['total'][0] = user.categories[section]['total'][0] + UPDATE_FACTOR
+        if isinstance(user.categories[section], dict) :
+	    user.categories[section]['total'][0] = user.categories[section]['total'][0] + UPDATE_FACTOR
         else :
             user.categories[section][0] = user.categories[section][0] + UPDATE_FACTOR
+	    print "inside second else" + section
+	    print user.categories[section][0]
     user.total = user.total + UPDATE_FACTOR
-    logging.info('Article count for section ' + section + 'is ' + str(user.categories[section][0]))
+   # logging.info('Article count for section ' + section + 'is ' + str(user.categories[section][0]))
     logging.info('Total count is ' + str(user.total))
     user.save()
 
