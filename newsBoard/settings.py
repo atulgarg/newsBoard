@@ -17,7 +17,7 @@ import mongoengine
 DBNAME = 'newsBoard'
 
 mongoengine.connect(DBNAME)
-GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-57001459-1'
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-57411575-1'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/

@@ -8,7 +8,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-57001459-1', 'auto');
+  ga('create', 'UA-57411575-1', 'auto');
   ga('set', 'dimension1', {{loginId}});
   ga('send', 'pageview');
 </script>
@@ -19,13 +19,13 @@
 		<h1>Hello {{loginId}}</h1>
          <h4>Percentages shown in brackets indicates how much does a user reads a particular section (Based on count)</h4>
         {% for article in articleList %}
-                {% if article.3 %}
+                {% if article.4 %}
                     <table>
-                    <h2>{{ article.3 }}  ({{ article.4 }}%)</h2>
+                    <h2>{{ article.4 }}  ({{ article.5 }}%)</h2>
                     <tr>
                 {% endif %}
                 <td style="width:60px"><p><img src= {{article.2}}></p>
-                    <p><a href="http://54.148.69.86/article&{{article.0}}&{{ loginId }}">{{article.1}}</a></p></td>
+                    <p><a href="http://54.149.58.17/article&{{article.0}}&{{ loginId }}">{{article.1}}</a></p></td>
                 <td style="width:30px"></td>
         {% endfor %}
 	</body>

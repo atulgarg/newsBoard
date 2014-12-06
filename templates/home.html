@@ -4,8 +4,10 @@
 	<head>
 		<title>NewsBoard HomePage </title>
 		{% google_analytics %}
+		<link rel="import" href="/mnt/newsBoard/templates/categories_menu.html" >
 	</head>
 	<body  bgcolor="#eeeeee">
+
 		<h1><center>Welcome to Personalized newsBoard</center></h1>
 		    <h2><center> Please login to continue!</center> </h2>
 		    <br>
@@ -13,7 +15,7 @@
 		    <br>
 		    <br>
 		    <br>
-		<form method="post" action="http://54.148.69.86/news/" style="text-align:center">
+		<form method="post" action="http://54.149.58.17/news/" style="text-align:center">
 			{% csrf_token %}
 			<label for="loginId">Login Id: </label>
 			<input type="text" id="loginId" name="loginId" placeholder="Your Login Id" required>
