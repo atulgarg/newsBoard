@@ -10,9 +10,21 @@ def updateUserProfile(loginId, section) :
   #can also use this line to update values
   #users.objects(_id=loginId).update_one(inc__total =1)
 
+  UPDATE_FACTOR = 1
+
   for user in  users.objects(_id=loginId) :
-    user.categories[section][0] = user.categories[section][0] + 1
-    user.total = user.total + 1
+    # Checking if the section has a subcategory
+    if "." in section :
+      section, subsection = section.split('.')
+      user.categories[section][subsection][0] = user.categories[section][subsection][0] + UPDATE_FACTOR
+      user.categories[section]['total'][0] = user.categories[section]['total'][0] + UPDATE_FACTOR
+    else :
+     # Even if the section does not have a "." it might be a section with subsection and this will have total field
+        if 'total' in user.categories[section].keys() :
+            user.categories[section]['total'][0] = user.categories[section]['total'][0] + UPDATE_FACTOR
+        else :
+            user.categories[section][0] = user.categories[section][0] + UPDATE_FACTOR
+    user.total = user.total + UPDATE_FACTOR
     logging.info('Article count for section ' + section + 'is ' + str(user.categories[section][0]))
     logging.info('Total count is ' + str(user.total))
     user.save()

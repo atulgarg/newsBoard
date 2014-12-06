@@ -17,8 +17,8 @@ MISSING_CLIENT_SECRETS_MESSAGE = '%s is missing' % CLIENT_SECRETS
 
 # The Flow object to be used if we need to authenticate.
 FLOW = flow_from_clientsecrets(CLIENT_SECRETS,
-    scope='https://www.googleapis.com/auth/analytics.readonly',
-    message=MISSING_CLIENT_SECRETS_MESSAGE)
+                               scope='https://www.googleapis.com/auth/analytics.readonly',
+                               message=MISSING_CLIENT_SECRETS_MESSAGE)
 
 print FLOW
 
@@ -27,31 +27,31 @@ TOKEN_FILE_NAME = 'analytics.dat'
 
 
 def prepare_credentials():
-  # Retrieve existing credendials
-  storage = Storage(TOKEN_FILE_NAME)
-  credentials = storage.get()
-  print credentials
-  # If existing credentials are invalid and Run Auth flow
-  # the run method will store any new credentials
-  if credentials is None or credentials.invalid:
-    credentials = run(FLOW, storage) #run Auth Flow and store credentials
-    print "abc" #+ credentials	
-  return credentials
+    # Retrieve existing credendials
+    storage = Storage(TOKEN_FILE_NAME)
+    credentials = storage.get()
+    print credentials
+    # If existing credentials are invalid and Run Auth flow
+    # the run method will store any new credentials
+    if credentials is None or credentials.invalid:
+        credentials = run(FLOW, storage)  # run Auth Flow and store credentials
+        print "abc"  # + credentials
+    return credentials
 
 
 def initialize_service():
-  # 1. Create an http object
-  http = httplib2.Http()
+    # 1. Create an http object
+    http = httplib2.Http()
 
-  # 2. Authorize the http object
-  # In this tutorial we first try to retrieve stored credentials. If
-  # none are found then run the Auth Flow. This is handled by the
-  # prepare_credentials() function defined earlier in the tutorial
-  credentials = prepare_credentials()
-  print credentials
-  http = credentials.authorize(http)  # authorize the http object
+    # 2. Authorize the http object
+    # In this tutorial we first try to retrieve stored credentials. If
+    # none are found then run the Auth Flow. This is handled by the
+    # prepare_credentials() function defined earlier in the tutorial
+    credentials = prepare_credentials()
+    print credentials
+    http = credentials.authorize(http)  # authorize the http object
 
-  # 3. Build the Analytics Service Object with the authorized http object
-  return build('analytics', 'v3', http=http)
+    # 3. Build the Analytics Service Object with the authorized http object
+    return build('analytics', 'v3', http=http)
 
 
