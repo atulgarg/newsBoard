@@ -72,7 +72,7 @@ def news(request):
         #looping through sections and print the articles from db in users order of preference
 	#sectionData in the below for loop is a list of 2 values. First value is section Name, section value is weightage
         for sectionData in sortedSections :
-            noOfArticles = sectionData[1]*50/totalValue
+            noOfArticles = sectionData[1]*30/totalValue
 	    predictedSection = sectionData[0]
 	    sectionWeightageLeft = sectionData[1]
 	    if sectionData[0] in preferredSubSections.keys() :
@@ -95,7 +95,7 @@ def news(request):
                			articleList.append(articleData)
 	    else :
 		    if sectionWeightageLeft > 0:
-		        noOfArticles = sectionWeightageLeft*50/totalValue
+		        noOfArticles = sectionWeightageLeft*30/totalValue
             		articlePercent = sectionData[1]*100/totalValue
 			for article in articles.objects(predictedSectionId=predictedSection)[:noOfArticles]:
                         #passing sectionId only to the first article of each section
@@ -121,7 +121,7 @@ def article(request):
        _id = None
        section = None
        for article in articles.objects(_id=idAndUser[1]) :
-             articleData = [article.webTitle, article.body, article.thumbNail]
+             articleData = [article.webTitle, article.body, article.thumbNail, article.predictedSectionId, article.expectedTime]
              _id = article._id
              section = article.sectionId
 
