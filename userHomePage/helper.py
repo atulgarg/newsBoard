@@ -37,7 +37,7 @@ def getDataFromSolr(id):
 
     print id
 
-    connstring = 'http://54.148.69.86:8983/solr/collection1/similararticles?q=id:'+ id +'&fl=id,webTitle,thumbNail&wt=json'
+    connstring = 'http://54.149.58.17:8983/solr/collection1/similararticles?q=id:'+ id +'&fl=id,webTitle,thumbNail&wt=json'
     connection = urlopen(connstring)
     response = simplejson.load(connection)
     similarArticles = []

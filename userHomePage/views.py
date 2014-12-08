@@ -115,10 +115,10 @@ def news(request):
             		for article in articles.objects(predictedSectionId=predictedSection)[:math.ceil(noOfArticles)]:
                 	#passing sectionId only to the first article of each section
                			if( lastSection != article.predictedSectionId) :
-                    			articleData = [article._id, article.webTitle, article.thumbNail,article.expectedTime, subsection, articlePercent]
+                    			articleData = [article._id, article.webTitle, article.thumbNail,'subSection', subsection, articlePercent]
                     			lastSection = article.predictedSectionId
                			else :
-                    			articleData = [article._id, article.webTitle, article.thumbNail,article.expectedTime]
+                    			articleData = [article._id, article.webTitle, article.thumbNail,'subSection']
                 			#  print article.date
 
                			articleList.append(articleData)
@@ -129,10 +129,10 @@ def news(request):
 			for article in articles.objects(predictedSectionId=predictedSection)[:math.ceil(noOfArticlesPerSection)]:
                         #passing sectionId only to the first article of each section
                         	if( lastSection != article.predictedSectionId) :
-                        		articleData = [article._id, article.webTitle, article.thumbNail,article.expectedTime,str.upper(article.predictedSectionId.encode('utf-8')), articlePercent]
+                        		articleData = [article._id, article.webTitle, article.thumbNail, 'section',str.upper(article.predictedSectionId.encode('utf-8')), articlePercent]
                         		lastSection = article.predictedSectionId
                         	else :  
-                                	articleData = [article._id, article.webTitle, article.thumbNail,article.expectedTime]
+                                	articleData = [article._id, article.webTitle, article.thumbNail, 'section']
                         		#  print article.date
 
             			articleList.append(articleData)
@@ -156,7 +156,7 @@ def article(request):
 
        updateUserProfile(idAndUser[2], section)
        similarArticlesData = None
-      # similarArticlesData = getDataFromSolr(_id)
+       similarArticlesData = getDataFromSolr(_id)
 
        return render(request, 'article.html', {'articleData' : articleData, 'similarArticlesData' : similarArticlesData,'loginId' : idAndUser[2]  })
 

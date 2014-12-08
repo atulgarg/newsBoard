@@ -113,17 +113,25 @@ div#hmenu ul a:hover{
 <li><a href="http://54.149.58.17/section&world&{{loginId}}">World</a></li>
 </ul>
 </div>
-		<h1>Hello {{loginId}}</h1>
-         <h4>Percentages shown in brackets indicates how much does a user reads a particular section (Based on count)</h4>
+		<h1 style="color:green">Hello {{loginId}}</h1>
+         <h4i style="color:green">Percentages shown in brackets indicates how much does a user reads a particular section (Based on clicks and time spent on each article)</h4>
         {% for article in articleList %}
                 	{% if article.4 %}
-                    		<table>
-                    		<h2>{{ article.4 }}  ({{ article.5 }}%)</h2>
-                    		<tr>
+			        {% ifequal article.3 'subSection' %}
+					 <table>
+	                                 <h2 style="padding-left:80px;color:#75AF89">{{ article.4 }}  ({{ article.5 }}%)</h2>
+					 <tr>
+					 <td style="width:80px"></td>	
+				{% else %}
+					<table>
+        	                        <h2 style="color:green;font-family:verdana">&nbsp;&nbsp;{{ article.4 }}  ({{ article.5 }}%)</h2>
+					<tr>
+					<td style="width:80px"></td>   
+				{% endifequal %}
 			{% endif %}
                 	{% if article.1 %}
                 		<td style="width:60px"><p><img src= {{article.2}}></p>
-                    		<p><a href="http://54.149.58.17/article&{{article.0}}&{{ loginId }}">{{article.1}}</a></p></td>
+                    		<p><a href="http://54.149.58.17/article&{{article.0}}&{{ loginId }}" style="color:green">{{article.1}}</a></p></td>
                 		<td style="width:30px"></td>
 			{% endif %}
         {% endfor %}
