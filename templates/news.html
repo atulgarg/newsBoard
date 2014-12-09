@@ -15,7 +15,7 @@
 	<script src="riveted.min.js"></script>
 	<script>riveted.init();</script> 
 	</head>
-	<body bgcolor="#eeeeee">
+	<body bgcolor="#eeeeee" vlink="#75AF89">
 <style>
 
 .offscreen {
@@ -80,6 +80,14 @@ div#hmenu ul a:hover{
    color: #f6f0cc;
    background-color: #227755;
 }
+a:visited
+{
+  color:#75AF89;
+}
+a:link 
+{
+  color:green;
+}
 </style>
 <div id="hmenu">
 <ul>
@@ -131,7 +139,7 @@ div#hmenu ul a:hover{
 			{% endif %}
                 	{% if article.1 %}
                 		<td style="width:60px"><p><img src= {{article.2}}></p>
-                    		<p><a href="http://54.149.58.17/article&{{article.0}}&{{ loginId }}" style="color:green">{{article.1}}</a></p></td>
+                    		<p><a href="http://54.149.58.17/article&{{article.0}}&{{ loginId }}">{{article.1}}</a></p></td>
                 		<td style="width:30px"></td>
 			{% endif %}
         {% endfor %}

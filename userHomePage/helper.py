@@ -20,6 +20,7 @@ def updateUserProfile(loginId, section) :
       user.categories[section]['total'][0] = user.categories[section]['total'][0] + UPDATE_FACTOR
     else :
      # Even if the section does not have a "." it might be a section with subsection and this will have total field
+	
         if isinstance(user.categories[section], dict) :
 	    user.categories[section]['total'][0] = user.categories[section]['total'][0] + UPDATE_FACTOR
         else :
@@ -40,10 +41,18 @@ def getDataFromSolr(id):
     connstring = 'http://54.149.58.17:8983/solr/collection1/similararticles?q=id:'+ id +'&fl=id,webTitle,thumbNail&wt=json'
     connection = urlopen(connstring)
     response = simplejson.load(connection)
+    #thumbDict = {'thumbNail':"http://demopcr.wpindeed.com/wp-content/plugins/pcr-listing-posts/image/no-thumbnail.png"}
     similarArticles = []
+    try:
+        if  response is None or 'response' not in response.keys()  or 'docs' not in response['response'].keys():
+            return
+    except:
+        return
     for document in response['response']['docs']:
-            similarArticles.append([document['id'], document['webTitle'], document['thumbNail'][0]])
-
+	    if 'thumbNail' in document.keys():
+                similarArticles.append([document['id'], document['webTitle'], document['thumbNail'][0]])
+	    else:
+		similarArticles.append([document['id'], document['webTitle'], "http://demopcr.wpindeed.com/wp-content/plugins/pcr-listing-posts/image/no-thumbnail.pn"])
     return similarArticles
 
 

@@ -109,10 +109,10 @@ def news(request):
             		articlePercent = round(subSectionData[1]*100/totalValue, 2)
 		        # subtracting subsection weight from total weight for a section
 			sectionWeightageLeft =- subSectionData[1]
-			predictedSection = subSectionData[0]
-            		print predictedSection + "  " + str(math.ceil(noOfArticles))
-			section, subsection = predictedSection.split(".")
-            		for article in articles.objects(predictedSectionId=predictedSection)[:math.ceil(noOfArticles)]:
+			predictedSubSection = subSectionData[0]
+            		print predictedSubSection + "  " + str(math.ceil(noOfArticles))
+			section, subsection = predictedSubSection.split(".")
+            		for article in articles.objects(predictedSectionId=predictedSubSection)[:math.ceil(noOfArticles)]:
                 	#passing sectionId only to the first article of each section
                			if( lastSection != article.predictedSectionId) :
                     			articleData = [article._id, article.webTitle, article.thumbNail,'subSection', subsection, articlePercent]
@@ -152,7 +152,7 @@ def article(request):
        for article in articles.objects(_id=idAndUser[1]) :
              articleData = [article.webTitle, article.body, article.thumbNail, article.predictedSectionId, article.expectedTime]
              _id = article._id
-             section = article.sectionId
+             section = article.predictedSectionId
 
        updateUserProfile(idAndUser[2], section)
        similarArticlesData = None

@@ -19,6 +19,7 @@
 			#similarHeading {
 				margin-top: -18px;
 				margin-left:30;
+				color :green;
 			}
 			#similarArticle {
 				width:500px;
@@ -157,7 +158,7 @@ div#hmenu ul a:hover{
 </ul>
 </div>
         <div id="header">
-			<h1>{{ articleData.0 }}</h1>
+			<h1 style="color:green">{{ articleData.0 }}</h1>
 		</div>
 		<div id="articleDetail">
 			<p><img src= {{articleData.2}}></p>
@@ -169,7 +170,7 @@ div#hmenu ul a:hover{
 				{% for article in similarArticlesData %}
 					<li class="thumbNail">
 						<img class="imagesLeftAligned" src= {{article.2}}> </img>
-						<a href="http://54.149.58.17/article&{{article.0}}&{{ loginId }}"> {{ article.1 }}</a>
+						<a style="color:green" href="http://54.149.58.17/article&{{article.0}}&{{ loginId }}"> {{ article.1 }}</a>
 					</li>
 				{% endfor %}
 			</ul>
